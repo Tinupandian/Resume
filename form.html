@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Greeting Based on Time</title>
+        <style>
+            body {
+                background-color: orange;
+                font-size: 24px;
+                text-align: center;
+                padding: 100px;
+            }
+            .rating {
+            unicode-bidi: bidi-override;
+            font-size: 0;
+            width: 150px;
+        }
+
+        .rating > label {
+            display: inline-block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #ccc; /* Empty star color */
+        }
+
+        .rating > label:before {
+            content: "\2605"; /* Empty star */
+            position: absolute;
+            left: 0;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > input:checked ~ label:before,
+        .rating > label:hover ~ input:checked ~ label:before {
+            content: "\2605"; /* Filled star */
+            color: #FFD700; /* Filled star color */
+        }
+
+        </style>
+        <title> form</title>
+    </head>
+    <body>
+        <h1>
+        <div id="greeting"></div>
+    </h1>
+
+    <script>
+        function updateGreeting() {
+            const currentTime = new Date();
+            const currentHour = currentTime.getHours();
+
+            let greeting;
+            if (currentHour >= 0 && currentHour < 12) {
+                greeting = "Good morning!";
+            } else if (currentHour >= 12 && currentHour < 18) {
+                greeting = "Good afternoon!";
+            } else {
+                greeting = "Good night!";
+            }
+
+            document.getElementById("greeting").textContent = greeting;
+        }
+
+        // Call the function to update the greeting initially
+        updateGreeting();
+
+        // Update the greeting every minute
+        setInterval(updateGreeting, 60000);
+    </script>
+    <script type="text/javascript">
+        function myfunc(event){
+            event.preventDefault();
+
+            Var name = document.getElementById("full_name").value;
+            Var temp_email = document.getElementById("email").value;
+            Var temp_gender = document.getElementById("gender");
+            Var temp_city = document.getElementById("city").value;
+            Var temp_rating = document.getElementById("rating").value;
+            Var temp_comment = document.getElementById("comment").value;
+        }
+        
+        temp_gender.checked? gender = "Male" : gender = "Female";
+
+        localstorage.setItem('Is_full_name', full_name);
+        localstorage.setItem('Is_email', emil_id);
+        localstorage.setItem('Is_gender', gender);
+        localstorage.setItem('Is_city', city);
+        localstorage.setItem('Is_rating', rating);
+        localstorage.setItem('Is_Comment', comment);
+    </script>
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Enter your full_name" required><br>
+        <label>Email id:</label>
+        <input type="text" name="name" placeholder="Enter your email_id" required><br>
+        <div>
+        <Label>Select Gender:</Label>
+        <input type="radio">Male
+        <input type="radio">Female<br>
+    </div>
+    <div>
+        <label >Select city:</label>
+        <select id="city" name="city">
+            <option>select</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Coimbatore">Coimbatore</option>
+            <option value="Salem">Salem</option>
+            <option value="Madurai">Madurai</option>
+        </select>
+    </div>
+        <label>Enter location:</label>
+        <input type="select" name="city" placeholder="Enter location"required><br>
+        <center>
+        <div class="rating">
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1"></label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2"></label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3"></label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4"></label>
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5"></label>
+        </div>
+    </center><br>
+    <label>Comment:</label>
+    <textarea placeholder="Enter your comment about this Site"></textarea><br>
+    <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>
